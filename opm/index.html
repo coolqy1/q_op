@@ -1,0 +1,1408 @@
+<!DOCTYPE html> 
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跨市场套利监控 - XXLB</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        :root {
+            --bg-body: #020617;
+            --bg-nav: #020617;
+            --bg-panel: #020617;
+            --bg-header-strip: #020617;
+            --bg-controls: #020617;
+            --bg-table-header: #020617;
+            --bg-row-alt: #020617;
+            --border-subtle: #1f2937;
+            --border-strong: #334155;
+            --text-main: #e5e7eb;
+            --text-muted: #9ca3af;
+            --accent: #38bdf8;
+            --accent-soft: rgba(56, 189, 248, 0.16);
+            --row-hover: rgba(148, 163, 184, 0.18);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top left, #0b1120 0, #020617 45%, #000 100%);
+            color: var(--text-main);
+        }
+
+        #app {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 顶部导航栏 */
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 24px;
+            background: linear-gradient(to right, #020617 0%, #020617 55%, #020617 100%);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+            box-shadow: 0 12px 40px rgba(15, 23, 42, 0.7);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px; /* 这里保持圆角矩形还是圆形？如果是顶部品牌Logo通常保持原样，下面改的是列表里的平台Logo */
+            object-fit: contain;
+        }
+
+        .brand-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .brand-top {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-title {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            color: #fff;
+        }
+
+        .brand-badge {
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            color: #e5e7eb;
+            background: radial-gradient(circle at top left, rgba(251, 191, 36, 0.4), transparent 60%);
+        }
+
+        .brand-subtitle {
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .nav-tab {
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 13px;
+            color: #9ca3af;
+            cursor: pointer;
+            border: 1px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .nav-tab:hover {
+            color: #e5e7eb;
+            background: rgba(148, 163, 184, 0.1);
+        }
+
+        .nav-tab span.badge {
+            font-size: 11px;
+            padding: 1px 6px;
+            border-radius: 999px;
+            background-color: rgba(30, 64, 175, 0.4);
+            color: #93c5fd;
+            border: 1px solid rgba(59, 130, 246, 0.6);
+        }
+
+        .nav-tab.active {
+            background: radial-gradient(circle at top center, rgba(14, 165, 233, 0.35), rgba(8, 47, 73, 0.95));
+            color: #e5e7eb;
+            border-color: rgba(56, 189, 248, 0.8);
+            box-shadow: 0 0 0 1px rgba(15, 23, 42, 1), 0 12px 30px rgba(8, 47, 73, 0.9);
+        }
+
+        .nav-tab.muted {
+            opacity: 0.8;
+        }
+
+        .nav-tab .pill {
+            font-size: 10px;
+            padding: 1px 6px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            color: #94a3b8;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-input {
+            width: 180px;
+            padding: 6px 28px 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(51, 65, 85, 0.9);
+            background: radial-gradient(circle at 0 0, rgba(15,23,42,0.9), rgba(2,6,23,0.95));
+            color: #e5e7eb;
+            font-size: 13px;
+        }
+
+        .search-input::placeholder {
+            color: #64748b;
+        }
+
+        .icon-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tool-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: inherit;
+        }
+
+        .tool-icon {
+            width: 20px;
+            height: 20px;
+            fill: var(--text-muted);
+            cursor: pointer;
+            transition: fill 0.2s;
+        }
+        .tool-icon:hover { fill: var(--text-main); }
+
+        .main-layout {
+            flex: 1;
+            display: flex;
+            padding: 20px 24px 20px;
+            gap: 24px;
+        }
+
+        .left-panel {
+            width: 280px;
+            min-width: 260px;
+            background: linear-gradient(145deg, #020617 0%, #020617 55%, #111827 100%);
+            border-radius: 18px;
+            border: 1px solid rgba(30, 64, 175, 0.5);
+            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.9);
+            padding: 16px 14px 14px;
+            position: sticky;
+            top: 64px;
+            align-self: flex-start;
+        }
+
+        .left-panel-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .left-panel-tagline {
+            font-size: 12px;
+            color: #9ca3af;
+            margin-bottom: 12px;
+        }
+
+        .left-panel-section {
+            margin-bottom: 16px;
+        }
+
+        .left-section-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #e5e7eb;
+            margin-bottom: 6px;
+        }
+
+        .left-section-content {
+            font-size: 12px;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        .left-section-content strong {
+            color: #e5e7eb;
+            font-weight: 600;
+        }
+
+        /* --- 名词解释高亮盒子 --- */
+        .explanation-box {
+            background: linear-gradient(to bottom right, rgba(59, 130, 246, 0.12), rgba(15, 23, 42, 0.8));
+            border: 1px solid rgba(96, 165, 250, 0.4);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .explanation-box::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #60a5fa;
+            box-shadow: 0 0 8px #60a5fa;
+        }
+
+        .explanation-box .left-section-title {
+            color: #93c5fd;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-shadow: 0 0 10px rgba(147, 197, 253, 0.3);
+        }
+
+        .explanation-box .item-group {
+            margin-bottom: 12px;
+        }
+
+        .explanation-box .item-title {
+            color: #fff;
+            font-weight: 600;
+            font-size: 13px;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .explanation-box .item-desc {
+            color: #cbd5e1;
+            font-size: 12px;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
+
+        .explanation-box .note {
+            font-size: 11px; 
+            color: #94a3b8; 
+            border-top: 1px dashed rgba(148,163,184,0.3); 
+            padding-top: 8px; 
+            margin-top: 8px;
+            line-height: 1.4;
+        }
+
+        /* --- 底部推广卡片高亮样式 --- */
+        .footer-box {
+            margin-top: 24px;
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.15), rgba(15, 23, 42, 0.8));
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer-box::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 60%);
+            animation: pulse 6s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        .footer-box-text {
+            position: relative;
+            z-index: 2;
+            font-size: 13px;
+            color: #cbd5e1;
+            font-weight: 500;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-box-btn {
+            position: relative;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(90deg, #2563eb, #0ea5e9);
+            color: #ffffff;
+            padding: 8px 24px;
+            border-radius: 999px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-box-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(14, 165, 233, 0.5);
+            filter: brightness(1.1);
+        }
+
+        .arrow-icon {
+            font-size: 14px;
+            transition: transform 0.2s;
+        }
+        
+        .footer-box-btn:hover .arrow-icon {
+            transform: translate(2px, -2px);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        .left-footnote {
+            margin-top: 10px;
+            font-size: 11px;
+            color: #64748b;
+        }
+
+        .right-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .panel-header-strip {
+            background: radial-gradient(circle at top center, rgba(15,23,42,1), rgba(2,6,23,1));
+            border-radius: 16px;
+            border: 1px solid rgba(31, 41, 55, 0.9);
+            padding: 12px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+        }
+
+        .panel-header-left {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .panel-title-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .panel-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .panel-subtitle {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        .panel-badge-row {
+            margin-top: 4px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .panel-badge {
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(156, 163, 175, 0.8);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .panel-badge span.dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #22c55e, #a3e635);
+        }
+
+        .panel-badge span.dot.red {
+            background: linear-gradient(135deg, #ef4444, #fb7185);
+        }
+
+        .panel-header-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .header-btn {
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(31, 41, 55, 0.9);
+            background: radial-gradient(circle at top left, rgba(15,23,42,1), rgba(2,6,23,1));
+            color: #e5e7eb;
+            font-size: 12px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .header-btn.primary {
+            background: radial-gradient(circle at top, rgba(34,211,238,0.4), rgba(8,47,73,1));
+            border-color: rgba(56,189,248,0.85);
+            box-shadow: 0 0 0 1px rgba(15,23,42,1), 0 12px 35px rgba(8,47,73,0.95);
+            font-weight: 500;
+        }
+
+        .header-btn span.icon-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 999px;
+            background: radial-gradient(circle, #22c55e, #bef264);
+        }
+
+        .filter-bar {
+            margin-top: 8px;
+            background: radial-gradient(circle at 0 0, rgba(30,64,175,0.26), rgba(15,23,42,0.95));
+            border-radius: 16px;
+            border: 1px solid rgba(30, 64, 175, 0.7);
+            padding: 10px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .filter-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        .filter-item label {
+            white-space: nowrap;
+        }
+
+        .filter-input,
+        .filter-select {
+            background: rgba(15, 23, 42, 0.95);
+            border-radius: 999px;
+            border: 1px solid rgba(51, 65, 85, 0.9);
+            color: #e5e7eb;
+            font-size: 12px;
+            padding: 5px 9px;
+            min-width: 60px;
+        }
+
+        .filter-right {
+            display: flex;
+            gap: 8px;
+        }
+
+        .filter-btn {
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(31, 41, 55, 0.9);
+            background: rgba(15, 23, 42, 0.95);
+            color: #e5e7eb;
+            font-size: 12px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .filter-btn.primary {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border-color: rgba(22, 163, 74, 0.95);
+            box-shadow: 0 8px 24px rgba(21, 128, 61, 0.8);
+            color: #ecfdf5;
+        }
+
+        .card-list {
+            margin-top: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .card {
+            background: radial-gradient(circle at top left, rgba(15,23,42,1), rgba(2,6,23,1));
+            border-radius: 18px;
+            border: 1px solid rgba(31, 41, 55, 0.9);
+            display: flex;
+            align-items: stretch;
+            padding: 12px 12px 12px 14px;
+            gap: 12px;
+            box-shadow: 0 20px 55px rgba(15, 23, 42, 0.95);
+            position: relative;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 18px;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(56,189,248,0.11), rgba(30,64,175,0.15), rgba(236,72,153,0.1));
+            -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .card-left {
+            flex: 1.5;
+        }
+
+        .event-row {
+            display: flex;
+            align-items: flex-start; /* 关键修改 */
+            gap: 10px;
+            margin-bottom: 12px; /* 关键修改 */
+        }
+        
+        .event-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .icon-box {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%; /* 关键修改：变成圆形 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            padding: 0;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: none; 
+        }
+        
+        .platform-icon-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%; /* 关键修改：变成圆形 */
+        }
+
+        .event-details h3 {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: #e5e7eb;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            line-height: 1.4;
+        }
+
+        .event-details h3 a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .event-details h3 a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- 方向标签样式 --- */
+        .side-badge {
+            display: inline-flex;
+            align-items: center;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 1px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-right: 8px; /* 右侧留白 */
+            flex-shrink: 0;
+            line-height: 1.2;
+            vertical-align: middle;
+        }
+        
+        /* YES - 绿色 */
+        .side-badge.yes {
+            background-color: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        /* NO - 红色 */
+        .side-badge.no {
+            background-color: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .event-details p {
+            margin: 4px 0 0;
+            font-size: 12px;
+            color: #9ca3af;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-stats {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 0 10px;
+            border-left: 1px dashed rgba(55, 65, 81, 0.8);
+            border-right: 1px dashed rgba(55, 65, 81, 0.8);
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            align-items: center;
+        }
+
+        .stat-label {
+            color: #9ca3af;
+        }
+
+        .stat-value {
+            font-weight: 600;
+        }
+
+        .stat-value.green {
+            color: #4ade80;
+        }
+
+        .stat-value.red {
+            color: #f97373;
+        }
+
+        .card-right {
+            flex: 0.9;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .timer {
+            font-size: 11px;
+            color: #e5e7eb;
+            display: inline-flex;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .timer span {
+            display: inline-block;
+            padding: 3px 6px;
+            border-radius: 8px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(75, 85, 99, 0.85);
+            min-width: 26px;
+            text-align: center;
+        }
+
+        .action-btn {
+            padding: 7px 12px;
+            font-size: 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(55, 65, 81, 0.95);
+            background: radial-gradient(circle at 0 0, rgba(15,23,42,1), rgba(2,6,23,1));
+            color: #e5e7eb;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .action-btn.executable {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border-color: rgba(22, 163, 74, 0.95);
+            box-shadow: 0 12px 24px rgba(22, 163, 74, 0.85);
+            color: #ecfdf5;
+        }
+
+        .action-btn.monitor-soon {
+            background: transparent;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            color: rgba(148, 163, 184, 0.6);
+            cursor: not-allowed;
+        }
+
+        .action-btn:hover {
+            filter: brightness(1.05);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px 0;
+            color: #9ca3af;
+        }
+
+        .footer-hint {
+            margin-top: 16px;
+            font-size: 10px;
+            color: #64748b;
+            text-align: center;
+        }
+
+        .external-link {
+            font-size: 12px;
+            color: #9ca3af;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 4px;
+        }
+
+        .external-link:hover {
+            color: #e5e7eb;
+        }
+
+        .arrow-icon {
+            font-size: 13px;
+        }
+
+        @media (max-width: 960px) {
+            .main-layout {
+                flex-direction: column;
+            }
+            .left-panel {
+                position: static;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .top-nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .nav-center {
+                order: 3;
+                width: 100%;
+                justify-content: flex-start;
+                overflow-x: auto;
+            }
+            .nav-right {
+                align-self: flex-end;
+            }
+            .main-layout {
+                padding: 14px 12px 20px;
+            }
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin: 24px 0 16px;
+        }
+        .pagination .page-btn {
+            padding: 6px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-controls);
+            color: var(--text-main);
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .pagination .page-btn:disabled {
+            opacity: 0.4;
+            cursor: default;
+        }
+        .pagination .page-info {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+
+<body>
+<div id="app">
+    <header class="top-nav">
+        <div class="nav-left">
+            <div class="logo-container">
+                <img src="op.png" alt="Opinion" class="brand-logo-img">
+                <img src="pm.png" alt="Polymarket" class="brand-logo-img">
+            </div>
+            <div class="brand-info">
+                <div class="brand-top">
+                    <span class="brand-title">跨市场套利</span>
+                    <span class="brand-badge">XXLB</span>
+                </div>
+                <div class="brand-subtitle">这个看板...怎么说呢？有点东西，但不多...</div>
+            </div>
+        </div>
+
+        <div class="nav-center">
+            <a href="https://xxlb.one/" target="_blank" class="nav-tab muted" @click="trackEvent('click_nav', {target: 'PM看板'})">
+                PM看板
+                <span class="pill">Polymarket</span>
+            </a>
+            <a href="https://opinion.xxlb.one/" target="_blank" class="nav-tab muted" @click="trackEvent('click_nav', {target: 'OP看板'})">
+                OP看板
+                <span class="pill">Opinion</span>
+            </a>
+            <div class="nav-tab active">
+                跨市场套利
+                <span class="badge">Beta</span>
+            </div>
+            <a href="https://t.me/meme_tvt" target="_blank" class="nav-tab muted" @click="trackEvent('click_nav', {target: 'TG群'})">
+                加入TG内测
+                <span class="pill">反馈</span>
+            </a>
+        </div>
+
+        <div class="nav-right">
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="搜索话题...">
+            </div>
+            <div class="icon-group">
+               
+                <a href="https://x.com/youknow028" target="_blank" class="tool-link" @click="trackEvent('click_social', {type: 'twitter_header'})">
+                    <svg class="tool-icon" viewBox="0 0 24 24">
+                        <path d="M23.953 4.57a10 10 0 01-2.825.775A4.958 4.958 0 0023.337 3a9.864 9.864 0 01-3.127 1.195 4.92 4.92 0 00-8.384 4.482A13.978 13.978 0 011.671 3.149a4.822 4.822 0 001.523 6.573 4.903 4.903 0 01-2.229-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.224.085 4.936 4.936 0 004.604 3.417A9.867 9.867 0 010 20.412 13.94 13.94 0 007.548 22c9.142 0 14.307-7.721 13.995-14.646A10.025 10.025 0 0024 4.59z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-layout">
+        <aside class="left-panel">
+            <div class="left-panel-title">这个面板，是干嘛的？</div>
+            <div class="left-panel-tagline">
+                简单讲：帮你看清「同一事件，在不同市场的价格错配」，看看哪里在乱喊，哪里在装死。
+            </div>
+
+            <div class="left-panel-section">
+                <div class="left-section-title">目前支持的组合</div>
+                <div class="left-section-content">
+                    · POLY & OPINION<br>
+                    · 后面可以接入更多赔率市场 & 预测市场<br>
+                    · 重点监控：宏观事件 / 名人事件 / 大盘相关预期
+                </div>
+            </div>
+
+            <div class="explanation-box">
+                <div class="left-section-title">
+                    <span>💡</span> 核心名词解释
+                </div>
+                <div class="left-section-content">
+                    <div class="item-group">
+                        <span class="item-title">可套利空间</span>
+                        <span class="item-desc">双边市场对于同一个预测事件的YES和NO在订单簿上的挂单价格之和小于100%的差值</span>
+                    </div>
+                    <div class="item-group">
+                        <span class="item-title">可套利资金</span>
+                        <span class="item-desc">双边市场上订单簿上存在可套利空间的挂单总金额</span>
+                    </div>
+                    <div class="item-group">
+                        <span class="item-title">预计收益</span>
+                        <span class="item-desc">模拟将存在套利空间的挂单全部吃掉后的总收益</span>
+                    </div>
+                    <div class="note">
+                        注：这里是理想情况，实际情况需要考虑交易滑点、手续费等情况
+                    </div>
+                </div>
+            </div>
+
+            <div class="left-panel-section">
+                <div class="left-section-title">怎么用更舒服？</div>
+                <div class="left-section-content">
+                    默认建议：<br>
+                    · 把排序方式调成「套利空间」看看有没有特别离谱的错价<br>
+                    · 把最小资金设成你自己能接受的仓位，不要被小额套利噪音干扰<br>
+                    · 看到「当前不具备」不要急，有些盘就是偶尔给机会
+                </div>
+            </div>
+
+          
+
+            <div class="left-footnote">
+                注：所有结果仅做观察和演示，不构成任何投资或交易建议。你要是真照着上，那是你自己的事。
+            </div>
+        </aside>
+
+        <section class="right-panel">
+            <div class="panel-header-strip">
+                <div class="panel-header-left">
+                    <div class="panel-title-row">
+                        <div class="panel-title">跨市场套利监控</div>
+                    </div>
+                    <div class="panel-subtitle">
+                        实时串联 POLY / Opinion 等多个盘口，盯着同一事件的价格错配。
+                    </div>
+                    <div class="panel-badge-row">
+                        <div class="panel-badge">
+                            <span class="dot"></span>
+                            实时拉取
+                        </div>
+                        <div class="panel-badge">
+                            <span class="dot red"></span>
+                            优先提示：高赔率错价 + 足够容量
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-header-right">
+                   
+                    <div class="header-actions">
+                        <button class="header-btn secondary" @click="refreshData(); trackEvent('click_refresh')">
+                            手动刷新
+                        </button>
+                        <button class="header-btn primary">
+                            <span class="icon-dot"></span>
+                            实盘版（规划中）
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filter-bar">
+                <div class="filter-left">
+                    <div class="filter-item">
+                        <label>排序方式</label>
+                        <select v-model="filters.sortBy" class="filter-select">
+                            <option value="spread">套利空间</option>
+                            <option value="available_capital">可套利资金</option>
+                            <option value="estimated_profit">预计收益</option>
+                            <option value="end_time">结束时间</option>
+                        </select>
+                    </div>
+                    <div class="filter-item">
+                        <label>最小套利空间（%）</label>
+                        <input
+                            v-model="filters.minSpread"
+                            type="number"
+                            min="0"
+                            step="0.1"
+                            oninput="if(value<0)value=0"
+                            class="filter-input"
+                            placeholder="比如 5"
+                        >
+                    </div>
+                    <div class="filter-item">
+                        <label>最小资金 ($)</label>
+                        <input
+                            v-model="filters.minCapital"
+                            type="number"
+                            min="0"
+                            step="100"
+                            oninput="if(value<0)value=0"
+                            class="filter-input"
+                            placeholder="比如 1000"
+                        >
+                    </div>
+                </div>
+                <div class="filter-right">
+                    <button class="filter-btn" @click="() => { filters.minSpread=''; filters.minCapital=''; trackEvent('click_filter_clear'); }">
+                        清空筛选
+                    </button>
+                    <button class="filter-btn primary" @click="refreshData(); trackEvent('click_filter', filters)">
+                        重新计算
+                    </button>
+                </div>
+            </div>
+
+            <div v-if="loading" class="loading">正在获取市场数据…</div>
+
+            <div v-else>
+                <div class="card-list">
+                    <div class="card" v-for="item in pagedList" :key="item.id">
+                        <div class="card-left">
+                            <div class="event-row" v-for="platform in item.platforms" :key="platform.name">
+                                <div class="icon-box">
+                                    <img :src="platform.icon_code === 'POLY' ? 'pm.png' : 'op.png'" class="platform-icon-img">
+                                </div>
+                                
+                                <div class="event-details">
+                                    <h3 :title="item.title">
+                                        <a :href="platform.url" target="_blank">
+                                            {{ cleanTitle(platform.title || item.title) }}
+                                        </a>
+                                    </h3>
+                                    
+                                    <p>
+                                        <span v-if="getBestMetrics(item).spread_state === 'profitable'"
+                                              class="side-badge"
+                                              :class="getActionSide(item, platform.name).toLowerCase()">
+                                            {{ getActionSide(item, platform.name) }}
+                                        </span>
+                                        {{ cleanTitle(item.description) }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-stats">
+                            <div class="stat-row">
+                                <span class="stat-label">套利空间</span>
+                                <span
+                                    class="stat-value"
+                                    :class="getBestMetrics(item).spread_state === 'profitable' ? 'green' : 'red'"
+                                >
+                                    {{ getBestMetrics(item).spread_state === 'profitable'
+                                        ? getBestMetrics(item).spread.toFixed(2) + '%'
+                                        : '当前不具备' }}
+                                </span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">可套利资金</span>
+                                <span class="stat-value">
+                                    {{ formatCurrency(getBestMetrics(item).available_capital) }}
+                                </span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="stat-label">预计收益</span>
+                                <span class="stat-value">
+                                    {{ formatCurrency(getBestMetrics(item).estimated_profit) }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="card-right">
+                            <div class="timer" v-html="getCountdown(item.end_time)"></div>
+
+                            <button
+                                class="action-btn"
+                                :class="item.action_status === 'executable' ? 'executable' : 'monitor-soon'"
+                                @click="handleAction(item)"
+                                :disabled="item.action_status !== 'executable'"
+                            >
+                                {{ item.action_status === 'executable' ? '执行套利soon...' : '设置监控soon...' }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagination" v-if="pageCount > 1">
+                    <button class="page-btn"
+                            @click="goPrevPage"
+                            :disabled="currentPageSafe === 1">
+                        上一页
+                    </button>
+                    <span class="page-info">
+                        第 {{ currentPageSafe }} / {{ pageCount }} 页（共 {{ filteredList.length }} 条）
+                    </span>
+                    <button class="page-btn"
+                            @click="goNextPage"
+                            :disabled="currentPageSafe === pageCount">
+                        下一页
+                    </button>
+                </div>
+            </div>
+
+            <div class="footer-box">
+                <div class="footer-box-text">看到这里的bro，大家多关注我推特 干货绝对多~</div>
+                <a class="footer-box-btn" href="https://x.com/youknow028" target="_blank" @click="trackEvent('click_social', {type: 'twitter_footer'})">
+                   Q的Twitter
+                    <span class="arrow-icon">↗</span>
+                </a>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script>
+const { createApp } = Vue;
+
+createApp({
+    data() {
+        return {
+            loading: false,
+            currentTime: Date.now(),
+            filters: {
+                sortBy: 'spread', // 默认排序
+                minSpread: '',
+                minCapital: ''
+            },
+            arbitrageList: [],
+            currentPage: 1,
+            pageSize: 10
+        };
+    },
+    computed: {
+        filteredList() {
+            // 1. 复制
+            let list = this.arbitrageList.slice();
+
+            // --- 基础过滤：只显示 profitable 的 ---
+            list = list.filter(item => {
+                const m = this.getBestMetrics(item);
+                return m.spread_state === 'profitable';
+            });
+
+            const minSpread = parseFloat(this.filters.minSpread);
+            const minCapital = parseFloat(this.filters.minCapital);
+
+            // 2. 数值筛选
+            if (!Number.isNaN(minSpread)) {
+                list = list.filter(item => {
+                    const m = this.getBestMetrics(item);
+                    return m.spread >= minSpread;
+                });
+            }
+
+            if (!Number.isNaN(minCapital)) {
+                list = list.filter(item => {
+                    const m = this.getBestMetrics(item);
+                    return m.available_capital >= minCapital;
+                });
+            }
+
+            // 3. 排序逻辑
+            const sortBy = this.filters.sortBy;
+            
+            list.sort((a, b) => {
+                const ma = this.getBestMetrics(a);
+                const mb = this.getBestMetrics(b);
+
+                // 核心：赚钱的排前面 (双重保险，虽然已被过滤)
+                if (ma.spread_state === 'profitable' && mb.spread_state !== 'profitable') return -1;
+                if (ma.spread_state !== 'profitable' && mb.spread_state === 'profitable') return 1;
+
+                // 具体字段降序
+                if (sortBy === 'spread') {
+                    return mb.spread - ma.spread;
+                } else if (sortBy === 'available_capital') {
+                    return mb.available_capital - ma.available_capital;
+                } else if (sortBy === 'estimated_profit') {
+                    return mb.estimated_profit - ma.estimated_profit;
+                } else if (sortBy === 'end_time') {
+                    const ea = this.normalizeEndTime(a.end_time);
+                    const eb = this.normalizeEndTime(b.end_time);
+                    return ea - eb; // 时间升序
+                }
+                return 0;
+            });
+
+            return list;
+        },
+        pageCount() {
+            const total = this.filteredList.length;
+            return total ? Math.ceil(total / this.pageSize) : 1;
+        },
+        currentPageSafe() {
+            return Math.min(Math.max(this.currentPage, 1), this.pageCount);
+        },
+        pagedList() {
+            const start = (this.currentPageSafe - 1) * this.pageSize;
+            return this.filteredList.slice(start, start + this.pageSize);
+        }
+    },
+    mounted() {
+        this.fetchData();
+        this.trackEvent('page_view', { page: 'arbitrage_monitor' });
+
+        setInterval(() => {
+            this.currentTime = Date.now();
+        }, 1000);
+    },
+    methods: {
+        async fetchData() {
+            this.loading = true;
+            try {
+                const res = await fetch("/api/arbitrage").catch(() => null);
+                if (res && res.ok) {
+                    const data = await res.json();
+                    this.arbitrageList = (data && data.data && Array.isArray(data.data.list)) ? data.data.list : [];
+                    this.currentPage = 1;
+                } else {
+                    console.log("演示模式");
+                    this.arbitrageList = [];
+                }
+            } catch (err) {
+                console.error("Error", err);
+            } finally {
+                this.loading = false;
+            }
+        },
+        refreshData() { this.fetchData(); },
+        trackEvent(action, data = {}) {
+            fetch('/api/track', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: action, timestamp: Date.now(), data: data })
+            }).catch(err => { console.log('Track error:', err); });
+        },
+        getBestMetrics(item) {
+            if (!item || !item.metrics) {
+                return { spread: 0, spread_state: 'unavailable', available_capital: 0, estimated_profit: 0 };
+            }
+            const m = item.metrics;
+            const normalize = (metricObj) => ({
+                spread: Number(metricObj?.spread || 0),
+                spread_state: metricObj?.spread_state || 'unavailable',
+                available_capital: Number(metricObj?.available_capital || 0),
+                estimated_profit: Number(metricObj?.estimated_profit || 0),
+                _ref: metricObj
+            });
+            const d1 = normalize(m.pm_yes_op_no);
+            const d2 = normalize(m.pm_no_op_yes);
+
+            const d1Profitable = d1.spread_state === 'profitable';
+            const d2Profitable = d2.spread_state === 'profitable';
+
+            if (d1Profitable && !d2Profitable) return d1;
+            if (!d1Profitable && d2Profitable) return d2;
+            if (d1.spread > d2.spread) return d1;
+            return d2;
+        },
+        // --- 标题清洗逻辑 ---
+        cleanTitle(title) {
+            if (!title) return '';
+            
+            // 1. 如果标题包含 "/"，只取 "/" 后面的部分
+            if (title.includes(' / ')) {
+                const parts = title.split(' / ');
+                return parts[parts.length - 1].trim();
+            }
+
+            // 2. 修复 slug 标题 (全是小写+横杠+无空格)
+            if (title.includes('-') && !title.includes(' ')) {
+                let text = title.replace(/-/g, ' ');
+                text = text.replace(/\s\d+$/, ''); // 去掉末尾数字ID
+                return text.charAt(0).toUpperCase() + text.slice(1);
+            }
+            return title;
+        },
+        // --- 判断买卖方向 (YES/NO) ---
+        getActionSide(item, platformName) {
+            if (!item || !item.metrics) return '';
+            const m = item.metrics;
+            const s1 = m.pm_yes_op_no;
+            const s1_valid = s1 && s1.spread_state === 'profitable';
+            const s1_spread = s1 ? Number(s1.spread) : -999;
+            const s2 = m.pm_no_op_yes;
+            const s2_valid = s2 && s2.spread_state === 'profitable';
+            const s2_spread = s2 ? Number(s2.spread) : -999;
+
+            let bestStrategy = '';
+            if (s1_valid && !s2_valid) bestStrategy = 'pm_yes_op_no';
+            else if (!s1_valid && s2_valid) bestStrategy = 'pm_no_op_yes';
+            else {
+                bestStrategy = (s1_spread > s2_spread) ? 'pm_yes_op_no' : 'pm_no_op_yes';
+            }
+
+            const isPolymarket = platformName.toLowerCase() === 'polymarket';
+            if (bestStrategy === 'pm_yes_op_no') {
+                return isPolymarket ? 'YES' : 'NO';
+            } else {
+                return isPolymarket ? 'NO' : 'YES';
+            }
+        },
+        formatCurrency(num) {
+            if (num == null || isNaN(num)) return '--';
+            return '$' + Number(num).toLocaleString(undefined, { maximumFractionDigits: 2 });
+        },
+        normalizeEndTime(endTime) {
+            if (!endTime) return 0;
+            if (typeof endTime === "number") return endTime < 1e12 ? endTime * 1000 : endTime;
+            if (typeof endTime === "string") return Date.parse(endTime) || 0;
+            return 0;
+        },
+        getCountdown(endTimeRaw) {
+            if (endTimeRaw === null) {
+                return '<span style="width: auto; padding: 3px 8px; color: #94a3b8; border-color: rgba(148, 163, 184, 0.3);">结束时间不确定 请去OP/PM判断</span>';
+            }
+            const endTime = this.normalizeEndTime(endTimeRaw);
+            const diff = endTime - this.currentTime;
+            if (!endTime || diff <= 0) {
+                return "<span>00</span> 天 <span>00</span> 时 <span>00</span> 分 <span>00</span> 秒";
+            }
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            const p = n => String(n).padStart(2, '0');
+            return `<span>${p(days)}</span> 天 <span>${p(hours)}</span> 时 <span>${p(minutes)}</span> 分 <span>${p(seconds)}</span> 秒`;
+        },
+        goPrevPage() {
+            if (this.currentPageSafe > 1) {
+                this.currentPage = this.currentPageSafe - 1;
+            }
+        },
+        goNextPage() {
+            if (this.currentPageSafe < this.pageCount) {
+                this.currentPage = this.currentPageSafe + 1;
+            }
+        },
+        handleAction(item) {
+            this.trackEvent('click_action_btn', {
+                pair_id: item.id,
+                title: item.title,
+                status: item.action_status,
+                spread: this.getBestMetrics(item).spread
+            });
+            if (item.action_status === 'executable') {
+                alert(`执行: ${item.title}\n请在交易终端操作。`);
+            }
+        }
+    }
+}).mount('#app');
+</script>
+
+</body>
+</html>

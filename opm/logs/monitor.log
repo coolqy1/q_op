@@ -1,0 +1,392 @@
+
+2025-12-17 08:12:56,734] INFO 拉取 Opinion orderbook 29965235800367803714826256827522718815244752567904397846499867273748436583641 成功（耗时1.334秒，0个价格档位）
+[2025-12-17 08:12:56,966] INFO Pair=27 所有 orderbook 拉取完成，总耗时3.127秒
+[2025-12-17 08:12:56,966] INFO Pair=27 订单簿拉取完成，已放入队列等待计算（队列大小：1）
+[2025-12-17 08:12:56,967] INFO 计算工作线程 calc_worker_8 从队列获取到 Pair=27，开始处理
+[2025-12-17 08:12:56,967] INFO 拉取 Pair=28 (25/160): What price will Bitcoin hit November 24-30? / ↓ 82,000
+[2025-12-17 08:12:56,967] INFO Pair=27 工作线程开始处理
+[2025-12-17 08:12:56,967] INFO Pair=27 调用 calculate_arbitrage
+[2025-12-17 08:12:56,967] INFO Pair=27 开始计算套利
+[2025-12-17 08:12:56,968] INFO Pair=27 orderbook 数据: pm_yes=0档位, pm_no=0档位, op_yes=0档位, op_no=0档位
+[2025-12-17 08:12:56,968] WARNING Pair=27 PM orderbook 为空
+[2025-12-17 08:12:56,968] INFO Pair=27 calculate_arbitrage 返回: processed=False
+[2025-12-17 08:12:56,968] INFO Pair=27 开始更新内存中的 pairs_dict
+[2025-12-17 08:12:56,968] INFO Pair=27 保留已有 metrics 数据
+[2025-12-17 08:12:56,968] INFO Pair=27 内存更新完成
+[2025-12-17 08:12:56,968] INFO Pair=27 处理完成，返回 False（未处理）
+[2025-12-17 08:12:57,667] WARNING 拉取 Polymarket orderbook 103940632875385766046727231808683314256289691594622097422764321674350340244413 失败（耗时0.700秒）：404 Client Error: Not Found for url: https://clob.polymarket.com/book?token_id=103940632875385766046727231808683314256289691594622097422764321674350340244413
+[2025-12-17 08:12:58,358] WARNING 拉取 Polymarket orderbook 68010014944069318662181281277364032185865219156039154521824654739722175484844 失败（耗时0.690秒）：404 Client Error: Not Found for url: https://clob.polymarket.com/book?token_id=68010014944069318662181281277364032185865219156039154521824654739722175484844
+[2025-12-17 08:12:58,528] INFO 拉取 Opinion orderbook 35692494661982210908781203860671417185550584550899993317377844381234438263693 成功（耗时0.169秒，0个价格档位）
+[2025-12-17 08:12:58,700] INFO 拉取 Opinion orderbook 49629710842114111820943732558788703275654715736801796399100856026183061239273 成功（耗时0.172秒，0个价格档位）
+[2025-12-17 08:12:58,700] INFO Pair=28 所有 orderbook 拉取完成，总耗时1.733秒
+[2025-12-17 08:12:58,700] INFO Pair=28 订单簿拉取完成，已放入队列等待计算（队列大小：1）
+[2025-12-17 08:12:58,700] INFO 计算工作线程 calc_worker_0 从队列获取到 Pair=28，开始处理
+[2025-12-17 08:12:58,700] INFO 拉取 Pair=29 (26/160): What price will Bitcoin hit November 24-30? / ↓ 80,000
+[2025-12-17 08:12:58,700] INFO Pair=28 工作线程开始处理
+[2025-12-17 08:12:58,701] INFO Pair=28 调用 calculate_arbitrage
+[2025-12-17 08:12:58,701] INFO Pair=28 开始计算套利
+[2025-12-17 08:12:58,701] INFO Pair=28 orderbook 数据: pm_yes=0档位, pm_no=0档位, op_yes=0档位, op_no=0档位
+[2025-12-17 08:12:58,701] WARNING Pair=28 PM orderbook 为空
+[2025-12-17 08:12:58,701] INFO Pair=28 calculate_arbitrage 返回: processed=False
+[2025-12-17 08:12:58,702] INFO Pair=28 开始更新内存中的 pairs_dict
+[2025-12-17 08:12:58,702] INFO Pair=28 保留已有 metrics 数据
+[2025-12-17 08:12:58,702] INFO Pair=28 内存更新完成
+[2025-12-17 08:12:58,702] INFO Pair=28 处理完成，返回 False（未处理）
+[2025-12-17 08:12:59,432] WARNING 拉取 Polymarket orderbook 1142038113152927486818033130278054191700621737298722822095563969976357259173 失败（耗时0.731秒）：404 Client Error: Not Found for url: https://clob.polymarket.com/book?token_id=1142038113152927486818033130278054191700621737298722822095563969976357259173
+[2025-12-17 08:13:00,119] WARNING 拉取 Polymarket orderbook 66676377120196281341636639514672498951984851998949331788947348508388311395072 失败（耗时0.687秒）：404 Client Error: Not Found for url: https://clob.polymarket.com/book?token_id=66676377120196281341636639514672498951984851998949331788947348508388311395072
+[2025-12-17 08:13:00,290] INFO 拉取 Opinion orderbook 12411054070756226514176628726211316328513344357306132799349436480833746231516 成功（耗时0.170秒，0个价格档位）
+[2025-12-17 08:13:00,461] INFO 拉取 Opinion orderbook 102796929469203868484072148482679195960442147044811826600561045729661403706334 成功（耗时0.170秒，0个价格档位）
+[2025-12-17 08:13:00,461] INFO Pair=29 所有 orderbook 拉取完成，总耗时1.760秒
+[2025-12-17 08:13:00,461] INFO Pair=29 订单簿拉取完成，已放入队列等待计算（队列大小：1）
+[2025-12-17 08:13:00,461] INFO 计算工作线程 calc_worker_5 从队列获取到 Pair=29，开始处理
+[2025-12-17 08:13:00,461] INFO 拉取 Pair=30 (27/160): Stable FDV one day after launch? / >$2B
+[2025-12-17 08:13:00,461] INFO Pair=29 工作线程开始处理
+[2025-12-17 08:13:00,461] INFO Pair=29 调用 calculate_arbitrage
+[2025-12-17 08:13:00,462] INFO Pair=29 开始计算套利
+[2025-12-17 08:13:00,462] INFO Pair=29 orderbook 数据: pm_yes=0档位, pm_no=0档位, op_yes=0档位, op_no=0档位
+[2025-12-17 08:13:00,462] WARNING Pair=29 PM orderbook 为空
+[2025-12-17 08:13:00,462] INFO Pair=29 calculate_arbitrage 返回: processed=False
+[2025-12-17 08:13:00,462] INFO Pair=29 开始更新内存中的 pairs_dict
+[2025-12-17 08:13:00,462] INFO Pair=29 保留已有 metrics 数据
+[2025-12-17 08:13:00,462] INFO Pair=29 内存更新完成
+[2025-12-17 08:13:00,462] INFO Pair=29 处理完成，返回 False（未处理）
+[2025-12-17 08:13:01,160] WARNING 拉取 Polymarket orderbook 39709375354063585013665128949013660810754548968833893687897104429767183648861 失败（耗时0.699秒）：404 Client Error: Not Found for url: https://clob.polymarket.com/book?token_id=39709375354063585013665128949013660810754548968833893687897104429767183648861
+[2025-12-17 08:13:01,847] WARNING 拉取 Polymarket orderbook 54142114445161149730781050717968017083411118286055751346482134644737453318946 失败（耗时0.686秒）：404 Client Error: Not Found for url: https://clob.polymarket.com/book?token_id=54142114445161149730781050717968017083411118286055751346482134644737453318946
+[2025-12-17 08:13:02,037] INFO 拉取 Opinion orderbook 38699587805289116472792264442385682011788682446442426960097740959338790372298 成功（耗时0.189秒，0个价格档位）
+[2025-12-17 08:13:02,255] INFO 拉取 Opinion orderbook 14855066091380968756836639359025805219783749538831860038324587357118170729278 成功（耗时0.217秒，0个价格档位）
+[2025-12-17 08:13:02,255] INFO Pair=30 所有 orderbook 拉取完成，总耗时1.794秒
+[2025-12-17 08:13:02,255] INFO Pair=30 订单簿拉取完成，已放入队列等待计算（队列大小：1）
+[2025-12-17 08:13:02,255] INFO 计算工作线程 calc_worker_6 从队列获取到 Pair=30，开始处理
+[2025-12-17 08:13:02,255] INFO 拉取 Pair=31 (28/160): Stable FDV one day after launch? / >$4B
+[2025-12-17 08:13:02,255] INFO Pair=30 工作线程开始处理
+[2025-12-17 08:13:02,256] INFO Pair=30 调用 calculate_arbitrage
+[2025-12-17 08:13:02,256] INFO Pair=30 开始计算套利
+[2025-12-17 08:13:02,256] INFO Pair=30 orderbook 数据: pm_yes=0档位, pm_no=0档位, op_yes=0档位, op_no=0档位
+[2025-12-17 08:13:02,256] WARNING Pair=30 PM orderbook 为空
+[2025-12-17 08:13:02,257] INFO Pair=30 calculate_arbitrage 返回: processed=False
+[2025-12-17 08:13:02,257] INFO Pair=30 开始更新内存中的 pairs_dict
+[2025-12-17 08:13:02,257] INFO Pair=30 保留已有 metrics 数据
+[2025-12-17 08:13:02,257] INFO Pair=30 内存更新完成
+[2025-12-17 08:13:02,257] INFO Pair=30 处理完成，返回 False（未处理）
+[2025-12-17 08:13:02,959] WARNING 拉取 Polymarket orderbook 14977533259955304754143113857076016136158658421101678792004783505703205291566 失败（耗时0.704秒）：404 Client Error: Not Found for url: https://clob.polymarket.com/book?token_id=14977533259955304754143113857076016136158658421101678792004783505703205291566
+[2025-12-17 08:13:03,639] WARNING 拉取 Polymarket orderbook 75694782939723252079350281610024278712881694546507467400055708307798957483591 失败（耗时0.679秒）：404 Client Error: Not Found for url: https://clob.polymarket.com/book?token_id=75694782939723252079350281610024278712881694546507467400055708307798957483591
+[2025-12-17 08:13:03,809] INFO 拉取 Opinion orderbook 112001749116597654510292958007254494836063324486807922187575106587042043046172 成功（耗时0.168秒，0个价格档位）
+[2025-12-17 08:13:03,979] INFO 拉取 Opinion orderbook 24924723521139436864929160286285561685410328920009906469260500601062186573648 成功（耗时0.170秒，0个价格档位）
+[2025-12-17 08:13:03,979] INFO Pair=31 所有 orderbook 拉取完成，总耗时1.724秒
+[2025-12-17 08:13:03,979] INFO Pair=31 订单簿拉取完成，已放入队列等待计算（队列大小：1）
+[2025-12-17 08:13:03,979] INFO 计算工作线程 calc_worker_1 从队列获取到 Pair=31，开始处理
+[2025-12-17 08:13:03,979] INFO 拉取 Pair=32 (29/160): Will NVIDIA (NVDA) close above ... end of November? / $160
+[2025-12-17 08:13:03,979] INFO Pair=31 工作线程开始处理
+[2025-12-17 08:13:03,980] INFO Pair=31 调用 calculate_arbitrage
+[2025-12-17 08:13:03,980] INFO Pair=31 开始计算套利
+[2025-12-17 08:13:03,980] INFO Pair=31 orderbook 数据: pm_yes=0档位, pm_no=0档位, op_yes=0档位, op_no=0档位
+[2025-12-17 08:13:03,980] WARNING Pair=31 PM orderbook 为空
+[2025-12-17 08:13:03,981] INFO Pair=31 calculate_arbitrage 返回: processed=False
+[2025-12-17 08:13:03,981] INFO Pair=31 开始更新内存中的 pairs_dict
+[2025-12-17 08:13:03,981] INFO Pair=31 保留已有 metrics 数据
+[2025-12-17 08:13:03,981] INFO Pair=31 内存更新完成
+[2025-12-17 08:13:03,981] INFO Pair=31 处理完成，返回 False（未处理）
+[2025-12-17 08:13:04,671] WARNING 拉取 Polymarket orderbook 10874841113081829946738641434813684258487631312351470997922410995546007117796 失败（耗时0.691秒）：404 Client Error: Not Found for url: https://clob.polymarket.com/book?token_id=10874841113081829946738641434813684258487631312351470997922410995546007117796
+[2025-12-17 08:13:05,366] WARNING 拉取 Polymarket orderbook 95463980175572172946205470694015211835433093572721060758305858816287851932797 失败（耗时0.694秒）：404 Client Error: Not Found for url: https://clob.polymarket.com/book?token_id=95463980175572172946205470694015211835433093572721060758305858816287851932797
+[2025-12-17 08:13:05,537] INFO 拉取 Opinion orderbook 23637073685041664070602650190948012396038577548146788261166311590055861014114 成功（耗时0.170秒，0个价格档位）
+[2025-12-17 08:13:05,711] INFO 拉取 Opinion orderbook 87138802542821638685732114960714265537688393255508807269243047344453229497406 成功（耗时0.173秒，1个价格档位）
+[2025-12-17 08:13:05,711] INFO Pair=32 所有 orderbook 拉取完成，总耗时1.731秒
+[2025-12-17 08:13:05,711] INFO Pair=32 订单簿拉取完成，已放入队列等待计算（队列大小：1）
+[2025-12-17 08:13:05,711] INFO 计算工作线程 calc_worker_4 从队列获取到 Pair=32，开始处理
+[2025-12-17 08:13:05,711] INFO 拉取 Pair=33 (30/160): Will NVIDIA (NVDA) close above ... end of November? / $170
+[2025-12-17 08:13:05,711] INFO Pair=32 工作线程开始处理
+[2025-12-17 08:13:05,711] INFO 拉取进度: 30/160 (18.8%)
+[2025-12-17 08:13:05,712] INFO Pair=32 调用 calculate_arbitrage
+[2025-12-17 08:13:05,712] INFO Pair=32 开始计算套利
+[2025-12-17 08:13:05,712] INFO Pair=32 orderbook 数据: pm_yes=0档位, pm_no=0档位, op_yes=0档位, op_no=1档位
+[2025-12-17 08:13:05,712] WARNING Pair=32 PM orderbook 为空
+[2025-12-17 08:13:05,713] INFO Pair=32 calculate_arbitrage 返回: processed=False
+[2025-12-17 08:13:05,713] INFO Pair=32 开始更新内存中的 pairs_dict
+[2025-12-17 08:13:05,713] INFO Pair=32 保留已有 metrics 数据
+[2025-12-17 08:13:05,713] INFO Pair=32 内存更新完成
+[2025-12-17 08:13:05,713] INFO Pair=32 处理完成，返回 False（未处理）
+[2025-12-17 08:13:06,415] WARNING 拉取 Polymarket orderbook 20085731581751529026511534316101049820474111178674214083357775723904061557804 失败（耗时0.704秒）：404 Client Error: Not Found for url: https://clob.polymarket.com/book?token_id=20085731581751529026511534316101049820474111178674214083357775723904061557804
+[2025-12-17 08:13:07,087] WARNING 拉取 Polymarket orderbook 38582389897817377398276860277175061748302106455260427882125939537872303053950 失败（耗时0.671秒）：404 Client Error: Not Found for url: https://clob.polymarket.com/book?token_id=38582389897817377398276860277175061748302106455260427882125939537872303053950
+[2025-12-17 08:13:07,260] INFO 拉取 Opinion orderbook 101915839231049461143562133428624845067330660244810437745710250329594822157494 成功（耗时0.172秒，0个价格档位）
+[2025-12-17 08:13:07,434] INFO 拉取 Opinion orderbook 74838321372770815325162841699424809983893963375210539870432930329781272131198 成功（耗时0.174秒，1个价格档位）
+[2025-12-17 08:13:07,435] INFO Pair=33 所有 orderbook 拉取完成，总耗时1.723秒
+[2025-12-17 08:13:07,435] INFO Pair=33 订单簿拉取完成，已放入队列等待计算（队列大小：1）
+[2025-12-17 08:13:07,435] INFO 计算工作线程 calc_worker_5 从队列获取到 Pair=33，开始处理
+[2025-12-17 08:13:07,435] INFO 拉取 Pair=34 (31/160): Will NVIDIA (NVDA) close above ... end of November? / $180
+[2025-12-17 08:13:07,435] INFO Pair=33 工作线程开始处理
+[2025-12-17 08:13:07,435] INFO Pair=33 调用 calculate_arbitrage
+[2025-12-17 08:13:07,436] INFO Pair=33 开始计算套利
+[2025-12-17 08:13:07,436] INFO Pair=33 orderbook 数据: pm_yes=0档位, pm_no=0档位, op_yes=0档位, op_no=1档位
+[2025-12-17 08:13:07,436] WARNING Pair=33 PM orderbook 为空
+[2025-12-17 08:13:07,436] INFO Pair=33 calculate_arbitrage 返回: processed=False
+[2025-12-17 08:13:07,436] INFO Pair=33 开始更新内存中的 pairs_dict
+[2025-12-17 08:13:07,436] INFO Pair=33 保留已有 metrics 数据
+[2025-12-17 08:13:07,436] INFO Pair=33 内存更新完成
+[2025-12-17 08:13:07,436] INFO Pair=33 处理完成，返回 False（未处理）
+[2025-12-17 08:13:08,122] WARNING 拉取 Polymarket orderbook 110271279407211753017090841489826787716651902938699492732444460332162622084823 失败（耗时0.687秒）：404 Client Error: Not Found for url: https://clob.polymarket.com/book?token_id=110271279407211753017090841489826787716651902938699492732444460332162622084823
+[2025-12-17 08:13:08,813] WARNING 拉取 Polymarket orderbook 32344724704675177255307497725578473604465999336458145512622829662057407686295 失败（耗时0.690秒）：404 Client Error: Not Found for url: https://clob.polymarket.com/book?token_id=32344724704675177255307497725578473604465999336458145512622829662057407686295
+[2025-12-17 08:13:08,985] INFO 拉取 Opinion orderbook 54874160046604563150561097320725722846024057245079823530381462760126928889218 成功（耗时0.171秒，1个价格档位）
+[2025-12-17 08:13:09,162] INFO 拉取 Opinion orderbook 9651719748160963732496450635309321610517223374690229438475054836025202330864 成功（耗时0.176秒，0个价格档位）
+[2025-12-17 08:13:09,162] INFO Pair=34 所有 orderbook 拉取完成，总耗时1.727秒
+[2025-12-17 08:13:09,162] INFO Pair=34 订单簿拉取完成，已放入队列等待计算（队列大小：1）
+[2025-12-17 08:13:09,162] INFO 计算工作线程 calc_worker_6 从队列获取到 Pair=34，开始处理
+[2025-12-17 08:13:09,162] INFO 拉取 Pair=35 (32/160): Will NVIDIA (NVDA) close above ... end of November? / $190
+[2025-12-17 08:13:09,162] INFO Pair=34 工作线程开始处理
+[2025-12-17 08:13:09,162] INFO Pair=34 调用 calculate_arbitrage
+[2025-12-17 08:13:09,163] INFO Pair=34 开始计算套利
+[2025-12-17 08:13:09,163] INFO Pair=34 orderbook 数据: pm_yes=0档位, pm_no=0档位, op_yes=1档位, op_no=0档位
+[2025-12-17 08:13:09,163] WARNING Pair=34 PM orderbook 为空
+[2025-12-17 08:13:09,163] INFO Pair=34 calculate_arbitrage 返回: processed=False
+[2025-12-17 08:13:09,163] INFO Pair=34 开始更新内存中的 pairs_dict
+[2025-12-17 08:13:09,163] INFO Pair=34 保留已有 metrics 数据
+[2025-12-17 08:13:09,163] INFO Pair=34 内存更新完成
+[2025-12-17 08:13:09,163] INFO Pair=34 处理完成，返回 False（未处理）
+[2025-12-17 08:13:09,863] WARNING 拉取 Polymarket orderbook 31907262940342193314824030089795392249182017190761007792171189113008756848157 失败（耗时0.701秒）：404 Client Error: Not Found for url: https://clob.polymarket.com/book?token_id=31907262940342193314824030089795392249182017190761007792171189113008756848157
+[2025-12-17 08:13:10,594] WARNING 拉取 Polymarket orderbook 99301726803077689398251805310513754545639730850554305313972355447814646135707 失败（耗时0.730秒）：404 Client Error: Not Found for url: https://clob.polymarket.com/book?token_id=99301726803077689398251805310513754545639730850554305313972355447814646135707
+[2025-12-17 08:13:10,762] INFO 拉取 Opinion orderbook 81633716753612543134711962147021441323713227503507487510360667952144600721428 成功（耗时0.167秒，0个价格档位）
+[2025-12-17 08:13:10,931] INFO 拉取 Opinion orderbook 47705065329615319924194384220991158703319110586502584698703270832738844319303 成功（耗时0.169秒，0个价格档位）
+[2025-12-17 08:13:10,931] INFO Pair=35 所有 orderbook 拉取完成，总耗时1.769秒
+[2025-12-17 08:13:10,931] INFO Pair=35 订单簿拉取完成，已放入队列等待计算（队列大小：1）
+[2025-12-17 08:13:10,931] INFO 计算工作线程 calc_worker_8 从队列获取到 Pair=35，开始处理
+[2025-12-17 08:13:10,932] INFO 拉取 Pair=36 (33/160): Will NVIDIA (NVDA) close above ... end of November? / $200
+[2025-12-17 08:13:10,932] INFO Pair=35 工作线程开始处理
+[2025-12-17 08:13:10,932] INFO Pair=35 调用 calculate_arbitrage
+[2025-12-17 08:13:10,932] INFO Pair=35 开始计算套利
+[2025-12-17 08:13:10,933] INFO Pair=35 orderbook 数据: pm_yes=0档位, pm_no=0档位, op_yes=0档位, op_no=0档位
+[2025-12-17 08:13:10,933] WARNING Pair=35 PM orderbook 为空
+[2025-12-17 08:13:10,933] INFO Pair=35 calculate_arbitrage 返回: processed=False
+[2025-12-17 08:13:10,933] INFO Pair=35 开始更新内存中的 pairs_dict
+[2025-12-17 08:13:10,933] INFO Pair=35 保留已有 metrics 数据
+[2025-12-17 08:13:10,933] INFO Pair=35 内存更新完成
+[2025-12-17 08:13:10,933] INFO Pair=35 处理完成，返回 False（未处理）
+[2025-12-17 08:13:11,604] WARNING 拉取 Polymarket orderbook 112590323475406192192012819814700831193163938287824007233932928543913964536559 失败（耗时0.672秒）：404 Client Error: Not Found for url: https://clob.polymarket.com/book?token_id=112590323475406192192012819814700831193163938287824007233932928543913964536559
+[2025-12-17 08:13:12,294] WARNING 拉取 Polymarket orderbook 95775911406465585035932258470946841542997665533642290286820743130913467775992 失败（耗时0.689秒）：404 Client Error: Not Found for url: https://clob.polymarket.com/book?token_id=95775911406465585035932258470946841542997665533642290286820743130913467775992
+[2025-12-17 08:13:12,466] INFO 拉取 Opinion orderbook 34819527178152246035653201951816026767898855342919577382381888476393978270219 成功（耗时0.170秒，0个价格档位）
+[2025-12-17 08:13:12,634] INFO 拉取 Opinion orderbook 1291659267271281150474943201806595656386374365289156170972699031254523435986 成功（耗时0.167秒，0个价格档位）
+[2025-12-17 08:13:12,634] INFO Pair=36 所有 orderbook 拉取完成，总耗时1.702秒
+[2025-12-17 08:13:12,634] INFO Pair=36 订单簿拉取完成，已放入队列等待计算（队列大小：1）
+[2025-12-17 08:13:12,634] INFO 计算工作线程 calc_worker_3 从队列获取到 Pair=36，开始处理
+[2025-12-17 08:13:12,634] INFO 拉取 Pair=37 (34/160): 2026 NBA Champion / Oklahoma City Thunder
+[2025-12-17 08:13:12,634] INFO Pair=36 工作线程开始处理
+[2025-12-17 08:13:12,635] INFO Pair=36 调用 calculate_arbitrage
+[2025-12-17 08:13:12,635] INFO Pair=36 开始计算套利
+[2025-12-17 08:13:12,635] INFO Pair=36 orderbook 数据: pm_yes=0档位, pm_no=0档位, op_yes=0档位, op_no=0档位
+[2025-12-17 08:13:12,635] WARNING Pair=36 PM orderbook 为空
+[2025-12-17 08:13:12,635] INFO Pair=36 calculate_arbitrage 返回: processed=False
+[2025-12-17 08:13:12,635] INFO Pair=36 开始更新内存中的 pairs_dict
+[2025-12-17 08:13:12,636] INFO Pair=36 保留已有 metrics 数据
+[2025-12-17 08:13:12,636] INFO Pair=36 内存更新完成
+[2025-12-17 08:13:12,636] INFO Pair=36 处理完成，返回 False（未处理）
+[2025-12-17 08:13:13,328] INFO 拉取 Polymarket orderbook 49500299856831034491021962156746701298730459370557900271970866855042624695770 成功（耗时0.693秒，42个价格档位）
+[2025-12-17 08:13:14,006] INFO 拉取 Polymarket orderbook 44914465637297319816681463234953032477919413063019359633128421605039733545953 成功（耗时0.677秒，44个价格档位）
+[2025-12-17 08:13:14,182] INFO 拉取 Opinion orderbook 43513352219589924316158850082015119640466278772107527430885047707582671339297 成功（耗时0.174秒，30个价格档位）
+[2025-12-17 08:13:14,356] INFO 拉取 Opinion orderbook 66843599734533023570182869420903571456565197716574586439687792774052379652088 成功（耗时0.173秒，23个价格档位）
+[2025-12-17 08:13:14,356] INFO Pair=37 所有 orderbook 拉取完成，总耗时1.721秒
+[2025-12-17 08:13:14,356] INFO Pair=37 订单簿拉取完成，已放入队列等待计算（队列大小：1）
+[2025-12-17 08:13:14,356] INFO 计算工作线程 calc_worker_2 从队列获取到 Pair=37，开始处理
+[2025-12-17 08:13:14,356] INFO 拉取 Pair=38 (35/160): 2026 NBA Champion / Cleveland Cavaliers
+[2025-12-17 08:13:14,356] INFO Pair=37 工作线程开始处理
+[2025-12-17 08:13:14,356] INFO Pair=37 调用 calculate_arbitrage
+[2025-12-17 08:13:14,357] INFO Pair=37 开始计算套利
+[2025-12-17 08:13:14,357] INFO Pair=37 orderbook 数据: pm_yes=42档位, pm_no=44档位, op_yes=30档位, op_no=23档位
+[2025-12-17 08:13:14,357] INFO Pair=37 开始计算 pm_yes+op_no 方案
+[2025-12-17 08:13:14,357] INFO Pair=37 pm_yes+op_no 计算结果: capacity=4326.03963 profit=4.33037 pm_price=0.47 op_price=0.529 price_gap=0.001
+[2025-12-17 08:13:14,357] INFO Pair=37 pm_yes+op_no 发现套利机会！profit=4.33037
+[2025-12-17 08:13:14,357] INFO Pair=37 开始计算 pm_no+op_yes 方案
+[2025-12-17 08:13:14,357] INFO Pair=37 pm_no+op_yes 计算结果: capacity=0 profit=0 pm_price=0.54 op_price=0.472000000000000000 price_gap=-0.012000000000000000
+[2025-12-17 08:13:14,357] INFO Pair=37 套利计算完成，计算耗时0.000秒，结果数=2
+[2025-12-17 08:13:14,357] INFO Pair=37 calculate_arbitrage 返回: processed=True
+[2025-12-17 08:13:14,357] INFO Pair=37 开始更新内存中的 pairs_dict
+[2025-12-17 08:13:14,358] INFO Pair=37 使用分析结果更新 pair
+[2025-12-17 08:13:14,358] INFO Pair=37 内存更新完成
+[2025-12-17 08:13:14,358] INFO Pair=37 (pm_yes+op_no): pm_price=0.47 op_price=0.529 price_gap=0.001 profit=4.33037 capacity=4326.03963 | 2026 NBA Champion / Oklahoma City Thunder
+[2025-12-17 08:13:14,358] INFO ✓ ARBITRAGE pair=37: pm_yes+op_no | pm_price=0.47 op_price=0.529 op_parent=2026 NBA Champion op_child=Oklahoma City Thunder capacity=4326.03963 price_gap=0.001 expected_profit=4.33037 | https://polymarket.com/event/2026-nba-champion / https://app.opinion.trade/detail?topicId=103&type=multi
+[2025-12-17 08:13:14,358] INFO Pair=37 (pm_no+op_yes): pm_price=0.54 op_price=0.472000000000000000 price_gap=-0.012000000000000000 profit=0 capacity=0 | 2026 NBA Champion / Oklahoma City Thunder
+[2025-12-17 08:13:14,358] INFO Pair=37 处理完成，返回 True
+[2025-12-17 08:13:14,358] INFO 计算工作线程 calc_worker_2 完成 Pair=37 的处理
+[2025-12-17 08:13:15,041] INFO 拉取 Polymarket orderbook 21929863894047830651599085392978377118642353711084157807549430066031384497667 成功（耗时0.685秒，79个价格档位）
+[2025-12-17 08:13:15,727] INFO 拉取 Polymarket orderbook 87330689906224096887625709229706923472442188571057301299963059101866409440363 成功（耗时0.685秒，29个价格档位）
+[2025-12-17 08:13:15,900] INFO 拉取 Opinion orderbook 92076532980511103468228733694262883935639500568860059190385036486859170778814 成功（耗时0.171秒，9个价格档位）
+[2025-12-17 08:13:16,072] INFO 拉取 Opinion orderbook 19596789295520075258538490566561621872131541354506622209320569254596651746600 成功（耗时0.171秒，10个价格档位）
+[2025-12-17 08:13:16,072] INFO Pair=38 所有 orderbook 拉取完成，总耗时1.715秒
+[2025-12-17 08:13:16,072] INFO Pair=38 订单簿拉取完成，已放入队列等待计算（队列大小：1）
+[2025-12-17 08:13:16,072] INFO 计算工作线程 calc_worker_6 从队列获取到 Pair=38，开始处理
+[2025-12-17 08:13:16,072] INFO 拉取 Pair=39 (36/160): 2026 NBA Champion / New York Knicks
+[2025-12-17 08:13:16,072] INFO Pair=38 工作线程开始处理
+[2025-12-17 08:13:16,072] INFO Pair=38 调用 calculate_arbitrage
+[2025-12-17 08:13:16,073] INFO Pair=38 开始计算套利
+[2025-12-17 08:13:16,073] INFO Pair=38 orderbook 数据: pm_yes=79档位, pm_no=29档位, op_yes=9档位, op_no=10档位
+[2025-12-17 08:13:16,073] INFO Pair=38 开始计算 pm_yes+op_no 方案
+[2025-12-17 08:13:16,073] INFO Pair=38 pm_yes+op_no 计算结果: capacity=7293.085384081759964068 profit=61.945167962242737932 pm_price=0.038 op_price=0.942 price_gap=0.020
+[2025-12-17 08:13:16,073] INFO Pair=38 pm_yes+op_no 发现套利机会！profit=61.945167962242737932
+[2025-12-17 08:13:16,073] INFO Pair=38 开始计算 pm_no+op_yes 方案
+[2025-12-17 08:13:16,073] INFO Pair=38 pm_no+op_yes 计算结果: capacity=0 profit=0 pm_price=0.965 op_price=0.059000000000000000 price_gap=-0.024000000000000000
+[2025-12-17 08:13:16,073] INFO Pair=38 套利计算完成，计算耗时0.000秒，结果数=2
+[2025-12-17 08:13:16,073] INFO Pair=38 calculate_arbitrage 返回: processed=True
+[2025-12-17 08:13:16,073] INFO Pair=38 开始更新内存中的 pairs_dict
+[2025-12-17 08:13:16,074] INFO Pair=38 使用分析结果更新 pair
+[2025-12-17 08:13:16,074] INFO Pair=38 内存更新完成
+[2025-12-17 08:13:16,074] INFO Pair=38 (pm_yes+op_no): pm_price=0.038 op_price=0.942 price_gap=0.020 profit=61.945167962242737932 capacity=7293.085384081759964068 | 2026 NBA Champion / Cleveland Cavaliers
+[2025-12-17 08:13:16,074] INFO ✓ ARBITRAGE pair=38: pm_yes+op_no | pm_price=0.038 op_price=0.942 op_parent=2026 NBA Champion op_child=Cleveland Cavaliers capacity=7293.085384081759964068 price_gap=0.020 expected_profit=61.945167962242737932 | https://polymarket.com/event/2026-nba-champion / https://app.opinion.trade/detail?topicId=103&type=multi
+[2025-12-17 08:13:16,074] INFO Pair=38 (pm_no+op_yes): pm_price=0.965 op_price=0.059000000000000000 price_gap=-0.024000000000000000 profit=0 capacity=0 | 2026 NBA Champion / Cleveland Cavaliers
+[2025-12-17 08:13:16,074] INFO Pair=38 处理完成，返回 True
+[2025-12-17 08:13:16,074] INFO 计算工作线程 calc_worker_6 完成 Pair=38 的处理
+[2025-12-17 08:13:16,752] INFO 拉取 Polymarket orderbook 20257190540739490630509657713144742134547949967093643458458133445357169845406 成功（耗时0.680秒，44个价格档位）
+[2025-12-17 08:13:17,422] INFO 拉取 Polymarket orderbook 1770840559776249239623005379825945674336282130390798724203946923853499387834 成功（耗时0.669秒，6个价格档位）
+[2025-12-17 08:13:17,595] INFO 拉取 Opinion orderbook 113389241731864438057082301034032828742913527702798203274790424086464944047283 成功（耗时0.171秒，12个价格档位）
+[2025-12-17 08:13:17,767] INFO 拉取 Opinion orderbook 25780127697449000089866124675696910402084709925510644896465247822062296568628 成功（耗时0.172秒，9个价格档位）
+[2025-12-17 08:13:17,767] INFO Pair=39 所有 orderbook 拉取完成，总耗时1.695秒
+[2025-12-17 08:13:17,768] INFO Pair=39 订单簿拉取完成，已放入队列等待计算（队列大小：1）
+[2025-12-17 08:13:17,768] INFO 计算工作线程 calc_worker_9 从队列获取到 Pair=39，开始处理
+[2025-12-17 08:13:17,768] INFO 拉取 Pair=40 (37/160): 2026 NBA Champion / Houston Rockets
+[2025-12-17 08:13:17,768] INFO Pair=39 工作线程开始处理
+[2025-12-17 08:13:17,768] INFO Pair=39 调用 calculate_arbitrage
+[2025-12-17 08:13:17,769] INFO Pair=39 开始计算套利
+[2025-12-17 08:13:17,769] INFO Pair=39 orderbook 数据: pm_yes=44档位, pm_no=6档位, op_yes=12档位, op_no=9档位
+[2025-12-17 08:13:17,769] INFO Pair=39 开始计算 pm_yes+op_no 方案
+[2025-12-17 08:13:17,769] INFO Pair=39 pm_yes+op_no 计算结果: capacity=0 profit=0 pm_price=0.07 op_price=0.942 price_gap=-0.012
+[2025-12-17 08:13:17,769] INFO Pair=39 开始计算 pm_no+op_yes 方案
+[2025-12-17 08:13:17,769] INFO Pair=39 pm_no+op_yes 计算结果: capacity=59.15079000000000000000 profit=0.05921000000000000000 pm_price=0.94 op_price=0.059000000000000000 price_gap=0.001000000000000000
+[2025-12-17 08:13:17,769] INFO Pair=39 pm_no+op_yes 发现套利机会！profit=0.05921000000000000000
+[2025-12-17 08:13:17,769] INFO Pair=39 套利计算完成，计算耗时0.000秒，结果数=2
+[2025-12-17 08:13:17,769] INFO Pair=39 calculate_arbitrage 返回: processed=True
+[2025-12-17 08:13:17,769] INFO Pair=39 开始更新内存中的 pairs_dict
+[2025-12-17 08:13:17,769] INFO Pair=39 使用分析结果更新 pair
+[2025-12-17 08:13:17,769] INFO Pair=39 内存更新完成
+[2025-12-17 08:13:17,769] INFO Pair=39 (pm_yes+op_no): pm_price=0.07 op_price=0.942 price_gap=-0.012 profit=0 capacity=0 | 2026 NBA Champion / New York Knicks
+[2025-12-17 08:13:17,769] INFO Pair=39 (pm_no+op_yes): pm_price=0.94 op_price=0.059000000000000000 price_gap=0.001000000000000000 profit=0.05921000000000000000 capacity=59.15079000000000000000 | 2026 NBA Champion / New York Knicks
+[2025-12-17 08:13:17,769] INFO ✓ ARBITRAGE pair=39: pm_no+op_yes | pm_price=0.94 op_price=0.059000000000000000 op_parent=2026 NBA Champion op_child=New York Knicks capacity=59.15079000000000000000 price_gap=0.001000000000000000 expected_profit=0.05921000000000000000 | https://polymarket.com/event/2026-nba-champion / https://app.opinion.trade/detail?topicId=103&type=multi
+[2025-12-17 08:13:17,770] INFO Pair=39 处理完成，返回 True
+[2025-12-17 08:13:17,770] INFO 计算工作线程 calc_worker_9 完成 Pair=39 的处理
+[2025-12-17 08:13:18,437] INFO 拉取 Polymarket orderbook 50705248713323657762767401378286601907820885259053704401453562452183494476631 成功（耗时0.669秒，36个价格档位）
+[2025-12-17 08:13:19,118] INFO 拉取 Polymarket orderbook 90032510016992035908144344334497034888131477599689435939081777415620747474258 成功（耗时0.680秒，6个价格档位）
+[2025-12-17 08:13:19,293] INFO 拉取 Opinion orderbook 33983412928971113842209826081112936134476688635498222333208982537424796788482 成功（耗时0.174秒，15个价格档位）
+[2025-12-17 08:13:19,517] INFO 拉取 Opinion orderbook 107186576826736984480273556043906291316041814419525856030267840974713793667173 成功（耗时0.224秒，9个价格档位）
+[2025-12-17 08:13:19,518] INFO Pair=40 所有 orderbook 拉取完成，总耗时1.750秒
+[2025-12-17 08:13:19,518] INFO Pair=40 订单簿拉取完成，已放入队列等待计算（队列大小：1）
+[2025-12-17 08:13:19,518] INFO 计算工作线程 calc_worker_3 从队列获取到 Pair=40，开始处理
+[2025-12-17 08:13:19,518] INFO 拉取 Pair=41 (38/160): 2026 NBA Champion / Los Angeles Lakers
+[2025-12-17 08:13:19,518] INFO Pair=40 工作线程开始处理
+[2025-12-17 08:13:19,519] INFO Pair=40 调用 calculate_arbitrage
+[2025-12-17 08:13:19,519] INFO Pair=40 开始计算套利
+[2025-12-17 08:13:19,519] INFO Pair=40 orderbook 数据: pm_yes=36档位, pm_no=6档位, op_yes=15档位, op_no=9档位
+[2025-12-17 08:13:19,519] INFO Pair=40 开始计算 pm_yes+op_no 方案
+[2025-12-17 08:13:19,519] INFO Pair=40 pm_yes+op_no 计算结果: capacity=334.11699 profit=1.71301 pm_price=0.07 op_price=0.923 price_gap=0.007
+[2025-12-17 08:13:19,519] INFO Pair=40 pm_yes+op_no 发现套利机会！profit=1.71301
+[2025-12-17 08:13:19,519] INFO Pair=40 开始计算 pm_no+op_yes 方案
+[2025-12-17 08:13:19,519] INFO Pair=40 pm_no+op_yes 计算结果: capacity=0 profit=0 pm_price=0.94 op_price=0.078000000000000000 price_gap=-0.018000000000000000
+[2025-12-17 08:13:19,519] INFO Pair=40 套利计算完成，计算耗时0.000秒，结果数=2
+[2025-12-17 08:13:19,519] INFO Pair=40 calculate_arbitrage 返回: processed=True
+[2025-12-17 08:13:19,519] INFO Pair=40 开始更新内存中的 pairs_dict
+[2025-12-17 08:13:19,519] INFO Pair=40 使用分析结果更新 pair
+[2025-12-17 08:13:19,519] INFO Pair=40 内存更新完成
+[2025-12-17 08:13:19,519] INFO Pair=40 (pm_yes+op_no): pm_price=0.07 op_price=0.923 price_gap=0.007 profit=1.71301 capacity=334.11699 | 2026 NBA Champion / Houston Rockets
+[2025-12-17 08:13:19,520] INFO ✓ ARBITRAGE pair=40: pm_yes+op_no | pm_price=0.07 op_price=0.923 op_parent=2026 NBA Champion op_child=Houston Rockets capacity=334.11699 price_gap=0.007 expected_profit=1.71301 | https://polymarket.com/event/2026-nba-champion / https://app.opinion.trade/detail?topicId=103&type=multi
+[2025-12-17 08:13:19,520] INFO Pair=40 (pm_no+op_yes): pm_price=0.94 op_price=0.078000000000000000 price_gap=-0.018000000000000000 profit=0 capacity=0 | 2026 NBA Champion / Houston Rockets
+[2025-12-17 08:13:19,520] INFO Pair=40 处理完成，返回 True
+[2025-12-17 08:13:19,520] INFO 计算工作线程 calc_worker_3 完成 Pair=40 的处理
+[2025-12-17 08:13:20,218] INFO 拉取 Polymarket orderbook 86297520870744792204751483474339201341298076835836561764334428915355504860913 成功（耗时0.700秒，90个价格档位）
+[2025-12-17 08:13:20,918] INFO 拉取 Polymarket orderbook 70799758189725267592147252808427831117090382599571633897338944002834894241449 成功（耗时0.699秒，34个价格档位）
+[2025-12-17 08:13:21,093] INFO 拉取 Opinion orderbook 87047390136406053462745121932008802757469413639390268420934976306184398111953 成功（耗时0.174秒，16个价格档位）
+[2025-12-17 08:13:21,266] INFO 拉取 Opinion orderbook 62580130823764537171084735931277056010407839154757366318383129098407880657895 成功（耗时0.173秒，5个价格档位）
+[2025-12-17 08:13:21,266] INFO Pair=41 所有 orderbook 拉取完成，总耗时1.748秒
+[2025-12-17 08:13:21,266] INFO Pair=41 订单簿拉取完成，已放入队列等待计算（队列大小：1）
+[2025-12-17 08:13:21,267] INFO 计算工作线程 calc_worker_2 从队列获取到 Pair=41，开始处理
+[2025-12-17 08:13:21,267] INFO 拉取 Pair=42 (39/160): 2026 NBA Champion / Denver Nuggets
+[2025-12-17 08:13:21,267] INFO Pair=41 工作线程开始处理
+[2025-12-17 08:13:21,267] INFO Pair=41 调用 calculate_arbitrage
+[2025-12-17 08:13:21,267] INFO Pair=41 开始计算套利
+[2025-12-17 08:13:21,268] INFO Pair=41 orderbook 数据: pm_yes=90档位, pm_no=34档位, op_yes=16档位, op_no=5档位
+[2025-12-17 08:13:21,268] INFO Pair=41 开始计算 pm_yes+op_no 方案
+[2025-12-17 08:13:21,268] INFO Pair=41 pm_yes+op_no 计算结果: capacity=4.82575 profit=0.02425 pm_price=0.042 op_price=0.953 price_gap=0.005
+[2025-12-17 08:13:21,268] INFO Pair=41 pm_yes+op_no 发现套利机会！profit=0.02425
+[2025-12-17 08:13:21,268] INFO Pair=41 开始计算 pm_no+op_yes 方案
+[2025-12-17 08:13:21,268] INFO Pair=41 pm_no+op_yes 计算结果: capacity=0 profit=0 pm_price=0.96 op_price=0.048000000000000000 price_gap=-0.008000000000000000
+[2025-12-17 08:13:21,268] INFO Pair=41 套利计算完成，计算耗时0.000秒，结果数=2
+[2025-12-17 08:13:21,268] INFO Pair=41 calculate_arbitrage 返回: processed=True
+[2025-12-17 08:13:21,268] INFO Pair=41 开始更新内存中的 pairs_dict
+[2025-12-17 08:13:21,268] INFO Pair=41 使用分析结果更新 pair
+[2025-12-17 08:13:21,268] INFO Pair=41 内存更新完成
+[2025-12-17 08:13:21,268] INFO Pair=41 (pm_yes+op_no): pm_price=0.042 op_price=0.953 price_gap=0.005 profit=0.02425 capacity=4.82575 | 2026 NBA Champion / Los Angeles Lakers
+[2025-12-17 08:13:21,268] INFO ✓ ARBITRAGE pair=41: pm_yes+op_no | pm_price=0.042 op_price=0.953 op_parent=2026 NBA Champion op_child=Los Angeles Lakers capacity=4.82575 price_gap=0.005 expected_profit=0.02425 | https://polymarket.com/event/2026-nba-champion / https://app.opinion.trade/detail?topicId=103&type=multi
+[2025-12-17 08:13:21,268] INFO Pair=41 (pm_no+op_yes): pm_price=0.96 op_price=0.048000000000000000 price_gap=-0.008000000000000000 profit=0 capacity=0 | 2026 NBA Champion / Los Angeles Lakers
+[2025-12-17 08:13:21,268] INFO Pair=41 处理完成，返回 True
+[2025-12-17 08:13:21,268] INFO 计算工作线程 calc_worker_2 完成 Pair=41 的处理
+[2025-12-17 08:13:21,950] INFO 拉取 Polymarket orderbook 56814725870179920615881424393027028330166672775619196396436430486653645555698 成功（耗时0.683秒，36个价格档位）
+[2025-12-17 08:13:22,639] INFO 拉取 Polymarket orderbook 76502490060038468983308870100553689583720145873703214557423080536912388384600 成功（耗时0.688秒，9个价格档位）
+[2025-12-17 08:13:22,812] INFO 拉取 Opinion orderbook 77161412129844740373035363981368567025027419725531169047725529962539678616608 成功（耗时0.172秒，21个价格档位）
+[2025-12-17 08:13:22,988] INFO 拉取 Opinion orderbook 23239117947633742064425868703606030907380055601584437366257645232847343084272 成功（耗时0.175秒，4个价格档位）
+[2025-12-17 08:13:22,988] INFO Pair=42 所有 orderbook 拉取完成，总耗时1.721秒
+[2025-12-17 08:13:22,988] INFO Pair=42 订单簿拉取完成，已放入队列等待计算（队列大小：1）
+[2025-12-17 08:13:22,988] INFO 计算工作线程 calc_worker_6 从队列获取到 Pair=42，开始处理
+[2025-12-17 08:13:22,988] INFO 拉取 Pair=43 (40/160): 2026 NBA Champion / Golden State Warriors
+[2025-12-17 08:13:22,988] INFO Pair=42 工作线程开始处理
+[2025-12-17 08:13:22,988] INFO 拉取进度: 40/160 (25.0%)
+[2025-12-17 08:13:22,988] INFO Pair=42 调用 calculate_arbitrage
+[2025-12-17 08:13:22,989] INFO Pair=42 开始计算套利
+[2025-12-17 08:13:22,989] INFO Pair=42 orderbook 数据: pm_yes=36档位, pm_no=9档位, op_yes=21档位, op_no=4档位
+[2025-12-17 08:13:22,989] INFO Pair=42 开始计算 pm_yes+op_no 方案
+[2025-12-17 08:13:22,989] INFO Pair=42 pm_yes+op_no 计算结果: capacity=0 profit=0 pm_price=0.1 op_price=0.92 price_gap=-0.02
+[2025-12-17 08:13:22,989] INFO Pair=42 开始计算 pm_no+op_yes 方案
+[2025-12-17 08:13:22,990] INFO Pair=42 pm_no+op_yes 计算结果: capacity=0 profit=0 pm_price=0.91 op_price=0.094000000000000000 price_gap=-0.004000000000000000
+[2025-12-17 08:13:22,990] INFO Pair=42 套利计算完成，计算耗时0.000秒，结果数=2
+[2025-12-17 08:13:22,990] INFO Pair=42 calculate_arbitrage 返回: processed=True
+[2025-12-17 08:13:22,990] INFO Pair=42 开始更新内存中的 pairs_dict
+[2025-12-17 08:13:22,990] INFO Pair=42 使用分析结果更新 pair
+[2025-12-17 08:13:22,990] INFO Pair=42 内存更新完成
+[2025-12-17 08:13:22,990] INFO Pair=42 (pm_yes+op_no): pm_price=0.1 op_price=0.92 price_gap=-0.02 profit=0 capacity=0 | 2026 NBA Champion / Denver Nuggets
+[2025-12-17 08:13:22,990] INFO Pair=42 (pm_no+op_yes): pm_price=0.91 op_price=0.094000000000000000 price_gap=-0.004000000000000000 profit=0 capacity=0 | 2026 NBA Champion / Denver Nuggets
+[2025-12-17 08:13:22,990] INFO Pair=42 处理完成，返回 True
+[2025-12-17 08:13:22,990] INFO 计算工作线程 calc_worker_6 完成 Pair=42 的处理
+[2025-12-17 08:13:23,666] INFO 拉取 Polymarket orderbook 24562451406833903239172268319519891863383297300349256425313284172658771272863 成功（耗时0.678秒，60个价格档位）
+[2025-12-17 08:13:24,374] INFO 拉取 Polymarket orderbook 96954689694848789665674862217402225728143997247600075527510661060109238213695 成功（耗时0.707秒，17个价格档位）
+[2025-12-17 08:13:24,545] INFO 拉取 Opinion orderbook 9493233890009806981204919694192186859568326591674459435843108156595387416764 成功（耗时0.170秒，14个价格档位）
+[2025-12-17 08:13:24,731] INFO 拉取 Opinion orderbook 64605739137931450569006571526302678375897248001336581711960363881036856403555 成功（耗时0.185秒，5个价格档位）
+[2025-12-17 08:13:24,731] INFO Pair=43 所有 orderbook 拉取完成，总耗时1.743秒
+[2025-12-17 08:13:24,731] INFO Pair=43 订单簿拉取完成，已放入队列等待计算（队列大小：1）
+[2025-12-17 08:13:24,731] INFO 计算工作线程 calc_worker_9 从队列获取到 Pair=43，开始处理
+[2025-12-17 08:13:24,731] INFO 拉取 Pair=44 (41/160): 2026 NBA Champion / Detroit Pistons
+[2025-12-17 08:13:24,731] INFO Pair=43 工作线程开始处理
+[2025-12-17 08:13:24,732] INFO Pair=43 调用 calculate_arbitrage
+[2025-12-17 08:13:24,732] INFO Pair=43 开始计算套利
+[2025-12-17 08:13:24,732] INFO Pair=43 orderbook 数据: pm_yes=60档位, pm_no=17档位, op_yes=14档位, op_no=5档位
+[2025-12-17 08:13:24,732] INFO Pair=43 开始计算 pm_yes+op_no 方案
+[2025-12-17 08:13:24,733] INFO Pair=43 pm_yes+op_no 计算结果: capacity=0 profit=0 pm_price=0.024 op_price=0.985 price_gap=-0.009
+[2025-12-17 08:13:24,733] INFO Pair=43 开始计算 pm_no+op_yes 方案
+[2025-12-17 08:13:24,733] INFO Pair=43 pm_no+op_yes 计算结果: capacity=0 profit=0 pm_price=0.978 op_price=0.033000000000000000 price_gap=-0.011000000000000000
+[2025-12-17 08:13:24,733] INFO Pair=43 套利计算完成，计算耗时0.000秒，结果数=2
+[2025-12-17 08:13:24,733] INFO Pair=43 calculate_arbitrage 返回: processed=True
+[2025-12-17 08:13:24,733] INFO Pair=43 开始更新内存中的 pairs_dict
+[2025-12-17 08:13:24,733] INFO Pair=43 使用分析结果更新 pair
+[2025-12-17 08:13:24,733] INFO Pair=43 内存更新完成
+[2025-12-17 08:13:24,733] INFO Pair=43 (pm_yes+op_no): pm_price=0.024 op_price=0.985 price_gap=-0.009 profit=0 capacity=0 | 2026 NBA Champion / Golden State Warriors
+[2025-12-17 08:13:24,733] INFO Pair=43 (pm_no+op_yes): pm_price=0.978 op_price=0.033000000000000000 price_gap=-0.011000000000000000 profit=0 capacity=0 | 2026 NBA Champion / Golden State Warriors
+[2025-12-17 08:13:24,733] INFO Pair=43 处理完成，返回 True
+[2025-12-17 08:13:24,733] INFO 计算工作线程 calc_worker_9 完成 Pair=43 的处理
+[2025-12-17 08:13:25,447] INFO 拉取 Polymarket orderbook 59742411602053785892348440048778056320272639465974092140970920277782290781360 成功（耗时0.716秒，56个价格档位）
+[2025-12-17 08:13:26,140] INFO 拉取 Polymarket orderbook 17229559412398170618704225341353811929634795955092110836823940954753499964583 成功（耗时0.692秒，30个价格档位）
+[2025-12-17 08:13:26,312] INFO 拉取 Opinion orderbook 111618601664120498767488594665294549431597073691178405611325263489066595151717 成功（耗时0.171秒，15个价格档位）
+[2025-12-17 08:13:26,485] INFO 拉取 Opinion orderbook 74063081089723540470616203486163356904447922447798883674688450517460964141948 成功（耗时0.172秒，4个价格档位）
+[2025-12-17 08:13:26,485] INFO Pair=44 所有 orderbook 拉取完成，总耗时1.753秒
+[2025-12-17 08:13:26,485] INFO Pair=44 订单簿拉取完成，已放入队列等待计算（队列大小：1）
+[2025-12-17 08:13:26,485] INFO 计算工作线程 calc_worker_3 从队列获取到 Pair=44，开始处理
+[2025-12-17 08:13:26,485] INFO 拉取 Pair=47 (42/160): edgeX FDV above ... one day after launch? / $1B
+[2025-12-17 08:13:26,485] INFO Pair=44 工作线程开始处理
+[2025-12-17 08:13:26,486] INFO Pair=44 调用 calculate_arbitrage
+[2025-12-17 08:13:26,486] INFO Pair=44 开始计算套利
+[2025-12-17 08:13:26,486] INFO Pair=44 orderbook 数据: pm_yes=56档位, pm_no=30档位, op_yes=15档位, op_no=4档位
+[2025-12-17 08:13:26,486] INFO Pair=44 开始计算 pm_yes+op_no 方案
+[2025-12-17 08:13:26,486] INFO Pair=44 pm_yes+op_no 计算结果: capacity=1319.86164 profit=6.65836 pm_price=0.034 op_price=0.96 price_gap=0.006
+[2025-12-17 08:13:26,486] INFO Pair=44 pm_yes+op_no 发现套利机会！profit=6.65836
+[2025-12-17 08:13:26,486] INFO Pair=44 开始计算 pm_no+op_yes 方案
+[2025-12-17 08:13:26,487] INFO Pair=44 pm_no+op_yes 计算结果: capacity=0 profit=0 pm_price=0.968 op_price=0.041000000000000000 price_gap=-0.009000000000000000
+[2025-12-17 08:13:26,487] INFO Pair=44 套利计算完成，计算耗时0.000秒，结果数=2
+[2025-12-17 08:13:26,487] INFO Pair=44 calculate_arbitrage 返回: processed=True
+[2025-12-17 08:13:26,487] INFO Pair=44 开始更新内存中的 pairs_dict
+[2025-12-17 08:13:26,487] INFO Pair=44 使用分析结果更新 pair
+[2025-12-17 08:13:26,487] INFO Pair=44 内存更新完成
+[2025-12-17 08:13:26,487] INFO Pair=44 (pm_yes+op_no): pm_price=0.034 op_price=0.96 price_gap=0.006 profit=6.65836 capacity=1319.86164 | 2026 NBA Champion / Detroit Pistons
+[2025-12-17 08:13:26,487] INFO ✓ ARBITRAGE pair=44: pm_yes+op_no | pm_price=0.034 op_price=0.96 op_parent=2026 NBA Champion op_child=Detroit Pistons capacity=1319.86164 price_gap=0.006 expected_profit=6.65836 | https://polymarket.com/event/2026-nba-champion / https://app.opinion.trade/detail?topicId=103&type=multi
+[2025-12-17 08:13:26,487] INFO Pair=44 (pm_no+op_yes): pm_price=0.968 op_price=0.041000000000000000 price_gap=-0.009000000000000000 profit=0 capacity=0 | 2026 NBA Champion / Detroit Pistons
+[2025-12-17 08:13:26,487] INFO Pair=44 处理完成，返回 True
+[2025-12-17 08:13:26,487] INFO 计算工作线程 calc_worker_3 完成 Pair=44 的处理

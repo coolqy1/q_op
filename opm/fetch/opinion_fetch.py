@@ -49,14 +49,14 @@ if USE_PROXY:
 
 # ------------------------------------------------------------------
 # Opinion.Trade SDK 配置
-API_KEY = "vQNNcIfnN9Iq7h6mWnADQkNaY5EE1gMI"
+API_KEY = ""
 HOST = "https://proxy.opinion.trade:8443"
 CHAIN_ID = 56
 RPC_URL = "https://bsc-dataseed.binance.org"
 PRIVATE_KEY = "0x" + "1" * 64
 MULTI_SIG_ADDR = "0x0000000000000000000000000000000000000000"
-CONDITIONAL_TOKEN_ADDR = "0xAD1a38cEc043e70E83a3eC30443dB285ED10D774"
-MULTISEND_ADDR = "0x998739BFdAAdde7C933B942a68053933098f9EDa"
+CONDITIONAL_TOKEN_ADDR = ""
+MULTISEND_ADDR = ""
 MARKET_FETCH_LIMIT = int(os.environ.get("MARKET_FETCH_LIMIT", "20"))
 ORDERBOOK_WORKERS = int(os.environ.get("ORDERBOOK_WORKERS", "5"))
 
